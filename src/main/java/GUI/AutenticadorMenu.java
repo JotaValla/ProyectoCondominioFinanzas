@@ -6,21 +6,27 @@ package GUI;
 
 import Administracion.*;
 import GUI.AdminGUI.AdminMenu;
+import GUI.ResidenteGUI.ResidenteMenu;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author intel
  */
 public class AutenticadorMenu extends javax.swing.JFrame {
-    //Administrador administrador;
+    Administrador administrador;
 
     /**
      * Creates new form login
      */
+    
+    Residente residente1;
+    
     public AutenticadorMenu() {
         initComponents();
         this.setVisible(true);
@@ -136,8 +142,13 @@ public class AutenticadorMenu extends javax.swing.JFrame {
                 Administrador administrador = obtenerAdministradorDelTxt(correo.getText(), contrasenia.getText() );
                 AdminMenu adminMenu = new AdminMenu(administrador);
             case "Residente":
-                Residente residente = obtenterResidenteDelTxt(correo.getText(), contrasenia.getText() );
-                //ResidenteMenu residenteMenu = new ResidenteMenu(residente);
+                //Residente residente = obtenterResidenteDelTxt(correo.getText(), contrasenia.getText() );
+                administrador = new Administrador("Juan", "Zambrano");
+                residente1 = administrador.registrarResidente("pepe", "ads", true);
+                //residente1 = new Residente("pepe", "ads", true);
+                ResidenteMenu residenteMenu = new ResidenteMenu(residente1);
+                residenteMenu.setVisible(true);
+
             case "Guardia":
                 //Guardia guardia = obtenterGuardiaDelTxt(correo.getText(), contrasenia.getText() );
                 //GuardiaMenu guardiaMenu = new GuardiaMenu(residente);

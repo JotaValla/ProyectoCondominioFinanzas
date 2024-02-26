@@ -17,6 +17,10 @@ public class Residente extends Perfil implements Serializable{
         this.esPropietario = esPropietario;
 
     }
+
+    public Residente() {
+        super(null,  null);
+    }
     public void darCuentaDePago(Cuenta cuentaAdministrador) {
         cuentaBancaria.setCuentaDePago(cuentaAdministrador);
     }

@@ -22,8 +22,7 @@ public class Administrador extends Perfil implements Serializable {
     private Condominio condominio;
 
     public Administrador(String nombre, String apellido) {
-        super(nombre, apellido);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        super(nombre, apellido);    
     }
 
     @Override
@@ -55,11 +54,11 @@ public class Administrador extends Perfil implements Serializable {
         return condominio.obtenerInmuebleComun();
     }
 
-    public void registrarResidente(String nombre, String apellido, Boolean esPropietario) {
+    public Residente registrarResidente(String nombre, String apellido, Boolean esPropietario) {
         Residente residenteNuevo = new Residente(nombre, apellido, esPropietario);
-        Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
-        residenteNuevo.setDepartamento(departamentoLibre);
-        departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
+        //Departamento departamentoLibre = condominio.obtenerDepartamentoLibre();
+        //residenteNuevo.setDepartamento(departamentoLibre);
+        //departamentoLibre.setPropietario(residenteNuevo);     //Bidireccional
 
         residenteNuevo.darCuentaDePago(this.cuentaBancaria);
         //residenteNuevo.getCuenta().aniadirObligacion(departamentoLibre.getMetrosCuadrados(), "hola", "alicuota");
@@ -82,7 +81,7 @@ public class Administrador extends Perfil implements Serializable {
         ArrayList<Residente> residentes = (ArrayList<Residente>) objectInputStream.readObject();
         objectInputStream.close();
          */
-
+        return residenteNuevo;
     }
 
     public void registrarResidente(String nombre, String apellido, Boolean esPropietario, String fechaActual, String fechaFin) {
