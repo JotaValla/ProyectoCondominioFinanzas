@@ -25,6 +25,10 @@ public class Administrador extends Perfil implements Serializable {
         super(nombre, apellido);    
     }
 
+    public Administrador() {
+       super(null, null); 
+    }
+
     @Override
     public String toString() {
         return "Administrador: " + nombre + " " + apellido;

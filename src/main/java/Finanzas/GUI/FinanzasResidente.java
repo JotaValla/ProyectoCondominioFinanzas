@@ -1,4 +1,4 @@
-package Finanzas.GUIResidente;
+package Finanzas.GUI;
 
 import Administracion.Residente;
 import Finanzas.Efectivo;
@@ -6,11 +6,13 @@ import Finanzas.MetodoRecarga;
 import Finanzas.ObligacionFinanciera;
 import Finanzas.Tarjeta;
 import Finanzas.Transferencia;
+import GUI.ResidenteGUI.ResidenteMenu;
 import javax.swing.JOptionPane;
 
 public class FinanzasResidente extends javax.swing.JFrame {
 
     static Residente residente = new Residente();
+    ResidenteMenu menu;
 
     public FinanzasResidente(Residente residente) {
         initComponents();
@@ -68,7 +70,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
         jTAListaRecargas = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,13 +136,10 @@ public class FinanzasResidente extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(280, 280, 280)
@@ -352,9 +351,14 @@ public class FinanzasResidente extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        jMenuItem1.setText("Regresar");
-        jMenu1.add(jMenuItem1);
+        jMenuItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItemSalir.setText("Regresar");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemSalir);
 
         jMenuBar1.add(jMenu1);
 
@@ -468,6 +472,11 @@ public class FinanzasResidente extends javax.swing.JFrame {
         jTAListaPagos.setText(residente.getCuenta().mostrarRegistros());
     }//GEN-LAST:event_btnMostrarListaPagosActionPerformed
 
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        this.setVisible(false);
+        menu.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
+
     public void limpiarDatosObligaciones() {
         jTAObligaciones.setText("");
         txtIDObligacion.setText("");
@@ -534,7 +543,7 @@ public class FinanzasResidente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

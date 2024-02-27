@@ -2,7 +2,7 @@
 package GUI.ResidenteGUI;
 
 import Administracion.Residente;
-import Finanzas.GUIResidente.FinanzasResidente;
+import Finanzas.GUI.FinanzasResidente;
 
 
 
